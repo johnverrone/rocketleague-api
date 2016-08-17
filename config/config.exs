@@ -37,7 +37,7 @@ config :guardian, Guardian,
   ttl: { 30, :days },
   verify_issuer: true, # optional
   secret_key: System.get_env("GUARDIAN_SECRET") || "rFC9BMrzRDRpgT4u65nOsEXgeeGMv5KA9j4YsY5Wb6KbTeTd00FRst3vn56Wluk+",
-  serializer: MyApp.GuardianSerializer
+  serializer: RocketleaguePhoenix.GuardianSerializer
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

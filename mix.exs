@@ -19,7 +19,7 @@ defmodule RocketleaguePhoenix.Mixfile do
   def application do
     [mod: {RocketleaguePhoenix, []},
      applications: [:phoenix, :phoenix_pubsub, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex]]
+                    :phoenix_ecto, :postgrex, :comeonin]]
   end
 
   # Specifies which paths to compile per environment.
@@ -37,6 +37,7 @@ defmodule RocketleaguePhoenix.Mixfile do
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
      {:cors_plug, "~> 1.1"},
+     {:comeonin, "~> 2.4"},
      {:guardian, "~> 0.12.0"},
      {:ja_serializer, "~> 0.10.1"}]
   end
