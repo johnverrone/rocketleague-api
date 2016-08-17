@@ -10,8 +10,9 @@ defmodule RocketleaguePhoenix.Router do
   scope "/api", RocketleaguePhoenix do
     pipe_through :api
 
-    resources "/players", PlayerController, except: [:new, :edit]
-    resources "/teams", TeamController, except: [:new, :edit]
     resources "/matches", MatchController, except: [:new, :edit]
+    resources "/players", PlayerController, except: [:new, :edit]
+    resources "/session", SessionController, only: [:index]
+    resources "/teams", TeamController, except: [:new, :edit]
   end
 end
