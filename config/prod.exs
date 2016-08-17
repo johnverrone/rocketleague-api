@@ -19,6 +19,17 @@ config :rocketleague_phoenix, RocketleaguePhoenix.Endpoint,
 # Do not print debug messages in production
 config :logger, level: :info
 
+config :rocketleague_phoenix, RocketleaguePhoenix.Endpoint,
+  http: [port: {:system, "PORT"}],
+  force_ssl: [rewrite_on: [:x_forwarded_proto]],
+  url: [host: "radiant-brook-24996.herokuapp.com", port: 443],
+  secret_key_base: System.get_env("SECRET_KEY_BASE")
+
+config :rocketleague_phoenix, RocketleaguePhoenix.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  url: System.get_env("DATABASE_URL"),
+
+
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key
