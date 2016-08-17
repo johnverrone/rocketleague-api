@@ -1,0 +1,17 @@
+language: elixir
+elixir:
+- 1.2
+otp_release:
+- 18.2
+sudo: false
+addons:
+  postgresql: '9.4'
+before_script:
+- psql -c 'create database peepchat_test;' -U postgres
+deploy:
+  provider: heroku
+  api_key:
+    secure: cJ4gBt1gLGoRBHtp4PADhzPxckUMlTczsTMvjSgw/1r8keYj++z4CbnvXv0ELrtDJ2zvM+Cntl6zrsMeUx/PswxLya17bawoBmy2Q1verT95ygBOZYZ2H3FBHFrER3fq/SRlAKJ2GasDfikOxMP7JURT6cg1KzFCLOmhD9Gcz/j4VlBoLEiXXzR8+g1kFD5E9AK6dh/UBykN2ANy1HW/9RDV4Px0udFTO87tBw702Husz/aqBipwHUZICBq1AI5pl5YymSzWiPEvEVCs8ofK6n63g/EBzSKlQfW1qH+druy/qhQGkkTeeUBmJChTLK59i67VTA2tccdj71lfOZCeocLR4UelEe38K4cwnoL3t8IBmU2N9aUPBNCP6GxHweBrqPeZrLwZvyseDe6CXQ1Pw9B8yH43QWB1KSu2sXZ+sGX5pdJ//TvyZUSLBKZfm5MuS0mDNzcs5FpErDqR1YyYyTaCllLZdRDBF4aNB90FPpBLmAJ3EuzjyhnVIXCYzb8ofigzh/xLPUVVwesEqwhY6tG0k2/mAxP8CZjw1BFYI/AwdWevNUpFFKS37OVAZzuAyMadijaktP0OO1hA5wwNOIr0Ayuw3FTf5vYUZW5+SXDkf+sB3Qv6NB4DHNRgr4evAByXMjsD/PvTQs26vHFsQnxWEPfMJAjx2bnfz4P6fS0=
+  app: radiant-brook-24996
+  on:
+    repo: jverrone3/rocketleague-api
