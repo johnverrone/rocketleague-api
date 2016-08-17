@@ -1,4 +1,6 @@
-# RocketleaguePhoenix
+# Rocket League API - Phoenix
+
+[![Build Status](https://travis-ci.org/jverrone3/rocketleague-api.svg?branch=master)](https://travis-ci.org/jverrone3/rocketleague-api)
 
 To start your Phoenix app:
 
