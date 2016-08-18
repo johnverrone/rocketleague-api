@@ -1,12 +1,25 @@
 defmodule RocketleaguePhoenix.ErrorView do
   use RocketleaguePhoenix.Web, :view
+  use JaSerializer.PhoenixView # Or use in web/web.ex
+
+  def render("401.json", _assigns) do
+    %{title: "Unauthorized", code: 401}
+    |> JaSerializer.ErrorSerializer.format 
+  end
+  
+  def render("403.json", _assigns) do
+    %{title: "Forbidden", code: 403}
+    |> JaSerializer.ErrorSerializer.format 
+  end
 
   def render("404.json", _assigns) do
-    %{errors: %{detail: "Page not found"}}
+    %{title: "Page not found", code: 404}
+    |> JaSerializer.ErrorSerializer.format
   end
 
   def render("500.json", _assigns) do
-    %{errors: %{detail: "Internal server error"}}
+    %{title: "Internal Server Error", code: 500}
+    |> JaSerializer.ErrorSerializer.format 
   end
 
   # In case no render clause matches or no
