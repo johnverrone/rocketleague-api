@@ -3,6 +3,7 @@ defmodule RocketleaguePhoenix.Router do
 
   pipeline :api do
     plug :accepts, ["json", "json-api"]
+    plug JaSerializer.Deserializer
   end
 
   pipeline :api_auth do

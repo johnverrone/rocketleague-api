@@ -11,11 +11,11 @@ defmodule RocketleaguePhoenix.RegistrationController do
       {:ok, user} ->
         conn
         |> put_status(:created)
-        |> render(RocketleaguePhoenix.UserView, "show.json", data: user)
+        |> render(RocketleaguePhoenix.UserView, "show.json-api", data: user)
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
-        |> render(RocketleaguePhoenix.ChangesetView, "error.json", changeset: changeset)
+        |> render(RocketleaguePhoenix.ChangesetView, "error.json-api", changeset: changeset)
     end  
   end
 end
