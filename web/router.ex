@@ -27,6 +27,7 @@ defmodule RocketleaguePhoenix.Router do
 
     get "/user/current", UserController, :current
     resources "/matches", MatchController, except: [:new, :edit]
+    resources "/games", GameController, except: [:new, :edit]
     resources "/players", PlayerController, except: [:new, :edit]
     resources "/session", SessionController, only: [:index]
     resources "/teams", TeamController, except: [:new, :edit]

@@ -2,11 +2,13 @@ defmodule RocketleaguePhoenix.Match do
   use RocketleaguePhoenix.Web, :model
 
   alias RocketleaguePhoenix.Team
+  alias RocketleaguePhoenix.Game
 
   schema "matches" do
     field :match_date, Ecto.Date
     belongs_to :blue_team, Team
     belongs_to :orange_team, Team
+    has_many :games, Game
 
     timestamps()
   end

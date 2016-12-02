@@ -26,13 +26,14 @@ defmodule RocketleaguePhoenix.MatchControllerTest do
       "type" => "match",
       "relationships" => %{
         "blue-team" => %{"data" => nil},
-        "orange-team" => %{"data" => nil}
+        "orange-team" => %{"data" => nil},
+        "games" => %{"data" => []}
       },
       "attributes" => %{
         "blue-team-id" => match.blue_team_id,
         "orange-team-id" => match.orange_team_id,
         "match-date" => match.match_date
-      }
+      },
     }
   end
 

@@ -9,4 +9,7 @@ defmodule RocketleaguePhoenix.MatchView do
   has_one :orange_team,
     serializer: RocketleaguePhoenix.TeamView,
     include: true
+  has_many :games,
+    serializer: RocketleaguePhoenix.GameView,
+    include: true
 end
