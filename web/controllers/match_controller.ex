@@ -37,7 +37,7 @@ defmodule RocketleaguePhoenix.MatchController do
   end
 
   def update(conn, %{"id" => id, "data" => data}) do
-    match = Repo.get!(Match, id) |> Repo.preload([:blue_team, :orange_team, :games])
+    match = Repo.get!(Match, id) |> Repo.preload([:blue_team, :orange_team, :games]) |> Repo.preload([blue_team: :players, orange_team: :players])
     changeset = Match.changeset(match, create_parms(data))
 
     case Repo.update(changeset) do
