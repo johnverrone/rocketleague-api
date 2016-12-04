@@ -9,7 +9,7 @@ defmodule RocketleaguePhoenix.GameControllerTest do
     conn = conn
       |> put_req_header("accept", "application/vnd.api+json")
       |> put_req_header("content-type", "application/vnd.api+json")
-    {:ok, conn: conn}\
+    {:ok, conn: conn}
   end
 
   test "lists all entries on index", %{conn: conn} do

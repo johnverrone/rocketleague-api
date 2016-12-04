@@ -31,5 +31,6 @@ defmodule RocketleaguePhoenix.Router do
     resources "/players", PlayerController, except: [:new, :edit]
     resources "/session", SessionController, only: [:index]
     resources "/teams", TeamController, except: [:new, :edit]
+    resources "/game_players", GamePlayerController, except: [:new, :edit]
   end
 end
