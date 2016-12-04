@@ -3,7 +3,7 @@ defmodule RocketleaguePhoenix.MatchTest do
 
   alias RocketleaguePhoenix.Match
 
-  @valid_attrs %{match_date: %{day: 17, month: 4, year: 2010}, blue_team_id: 3, orange_team_id: 1}
+  @valid_attrs %{match_date: %{day: 17, month: 4, year: 2010}, blue_team_id: 3, orange_team_id: 1, week_number: 1}
   @invalid_attrs %{}
 
   test "changeset with valid attributes" do

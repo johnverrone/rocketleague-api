@@ -6,6 +6,7 @@ defmodule RocketleaguePhoenix.Match do
 
   schema "matches" do
     field :match_date, Ecto.Date
+    field :week_number, :integer
     belongs_to :blue_team, Team
     belongs_to :orange_team, Team
     has_many :games, Game
@@ -13,7 +14,7 @@ defmodule RocketleaguePhoenix.Match do
     timestamps()
   end
 
-  @required_fields ~w(match_date blue_team_id orange_team_id)
+  @required_fields ~w(match_date blue_team_id orange_team_id week_number)
   @optional_fields ~w()
 
   @doc """
