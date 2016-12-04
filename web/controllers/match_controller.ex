@@ -28,7 +28,7 @@ defmodule RocketleaguePhoenix.MatchController do
   defp create_parms(data) do
     data
       |> JaSerializer.Params.to_attributes
-      |> Map.take(["match_date", "blue_team_id", "orange_team_id"])
+      |> Map.take(["match_date", "blue_team_id", "orange_team_id", "week_number"])
   end
 
   def show(conn, %{"id" => id}) do
