@@ -3,7 +3,7 @@ defmodule RocketleaguePhoenix.GamePlayerTest do
 
   alias RocketleaguePhoenix.GamePlayer
 
-  @valid_attrs %{assists: 42, goals: 42, mvp: true, saves: 42, shots: 42, game_id: 1, player_id: 1}
+  @valid_attrs %{assists: 42, goals: 42, mvp: true, saves: 42, shots: 42, score: 42, game_id: 1, player_id: 1}
   @invalid_attrs %{}
 
   test "changeset with valid attributes" do

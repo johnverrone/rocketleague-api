@@ -32,7 +32,8 @@ defmodule RocketleaguePhoenix.MatchControllerTest do
       "attributes" => %{
         "blue-team-id" => match.blue_team_id,
         "orange-team-id" => match.orange_team_id,
-        "match-date" => match.match_date
+        "match-date" => match.match_date,
+        "week-number" => match.week_number
       },
     }
   end

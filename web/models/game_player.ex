@@ -6,6 +6,7 @@ defmodule RocketleaguePhoenix.GamePlayer do
     field :assists, :integer
     field :saves, :integer
     field :shots, :integer
+    field :score, :float
     field :mvp, :boolean, default: false
     belongs_to :game, RocketleaguePhoenix.Game
     belongs_to :player, RocketleaguePhoenix.Player
@@ -13,7 +14,7 @@ defmodule RocketleaguePhoenix.GamePlayer do
     timestamps()
   end
 
-  @required_fields ~w(goals assists saves shots mvp game_id player_id)
+  @required_fields ~w(goals assists saves shots score mvp game_id player_id)
   @optional_fields ~w()
 
   @doc """

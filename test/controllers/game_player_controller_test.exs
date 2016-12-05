@@ -30,6 +30,7 @@ defmodule RocketleaguePhoenix.GamePlayerControllerTest do
         "assists" => game_player.assists,
         "saves" => game_player.saves,
         "shots" => game_player.shots,
+        "score" => game_player.score,
         "mvp" => game_player.mvp
       }
     }

@@ -27,7 +27,7 @@ defmodule RocketleaguePhoenix.GamePlayerController do
   defp create_parms(data) do
     data
       |> JaSerializer.Params.to_attributes
-      |> Map.take(["game_id", "player_id", "goals", "assists", "shots", "saves", "mvp"])
+      |> Map.take(["game_id", "player_id", "goals", "assists", "shots", "saves", "score", "mvp"])
   end
 
   def show(conn, %{"id" => id}) do
