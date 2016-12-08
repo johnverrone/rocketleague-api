@@ -19,7 +19,7 @@ defmodule RocketleaguePhoenix.Mixfile do
   def application do
     [mod: {RocketleaguePhoenix, []},
      applications: [:phoenix, :phoenix_pubsub, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex, :comeonin]]
+                    :phoenix_ecto, :postgrex, :comeonin, :graphql, :plug_graphql]]
   end
 
   # Specifies which paths to compile per environment.
@@ -39,7 +39,9 @@ defmodule RocketleaguePhoenix.Mixfile do
      {:cors_plug, "~> 1.1"},
      {:comeonin, "~> 2.4"},
      {:guardian, "~> 0.12.0"},
-     {:ja_serializer, "~> 0.10.1"}]
+     {:ja_serializer, "~> 0.10.1"},
+     {:graphql, "~> 0.3.1"},
+     {:plug_graphql, "~> 0.3.1"}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.

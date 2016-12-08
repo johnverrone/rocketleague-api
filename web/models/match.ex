@@ -27,4 +27,11 @@ defmodule RocketleaguePhoenix.Match do
     |> foreign_key_constraint(:orange_team_id)
     |> validate_required([:match_date])
   end
+
+  def find_by_id(id) do
+    query = from m in RocketleaguePhoenix.Match,
+      join: g in assoc(m, :games),
+      where: m.id == ^id
+    RocketleaguePhoenix.Repo.all(query) |> RocketleaguePhoenix.Repo.preload([:games])
+  end
 end
