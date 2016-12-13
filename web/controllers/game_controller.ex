@@ -13,7 +13,7 @@ defmodule RocketleaguePhoenix.GameController do
 
     case Repo.insert(changeset) do
       {:ok, game} ->
-        game = Repo.preload(game, [:match])
+        game = Repo.preload(game, [:match, :game_players])
         conn
         |> put_status(:created)
         |> put_resp_header("location", game_path(conn, :show, game))
