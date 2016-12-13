@@ -32,7 +32,8 @@ defmodule RocketleaguePhoenix.GamePlayerControllerTest do
         "shots" => game_player.shots,
         "score" => game_player.score,
         "mvp" => game_player.mvp
-      }
+      },
+      "relationships" => %{"player" => %{"data" => nil}}
     }
      
   end

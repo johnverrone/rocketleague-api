@@ -4,7 +4,7 @@ defmodule RocketleaguePhoenix.GameController do
   alias RocketleaguePhoenix.Game
 
   def index(conn, _params) do
-    games = Game |> Repo.all
+    games = Game |> Repo.all |> Repo.preload([:game_players])
     render(conn, "index.json-api", data: games)
   end
 
@@ -32,12 +32,12 @@ defmodule RocketleaguePhoenix.GameController do
   end
 
   def show(conn, %{"id" => id}) do
-    game = Repo.get!(Game, id)
+    game = Repo.get!(Game, id) |> Repo.preload([:game_players])
     render(conn, "show.json-api", data: game)
   end
 
   def update(conn, %{"id" => id, "data" => data}) do
-    game = Repo.get!(Game, id)
+    game = Repo.get!(Game, id) |> Repo.preload([:game_players])
     changeset = Game.changeset(game, create_parms(data))
 
     case Repo.update(changeset) do

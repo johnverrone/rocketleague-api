@@ -4,7 +4,9 @@ defmodule RocketleaguePhoenix.MatchController do
   alias RocketleaguePhoenix.Match
 
   def index(conn, _params) do
-    matches = Match |> Repo.all |> Repo.preload([:blue_team, :orange_team, :games]) |> Repo.preload([blue_team: :players, orange_team: :players])
+    matches = Match 
+      |> Repo.all 
+      |> Repo.preload([{:games, [{:game_players, :player}]}, {:blue_team, :players}, {:orange_team, :players}])
     render(conn, "index.json-api", data: matches)
   end
 
@@ -32,12 +34,12 @@ defmodule RocketleaguePhoenix.MatchController do
   end
 
   def show(conn, %{"id" => id}) do
-    match = Repo.get!(Match, id) |> Repo.preload([:blue_team, :orange_team, :games]) |> Repo.preload([blue_team: :players, orange_team: :players])
+    match = Repo.get!(Match, id) |> Repo.preload([{:games, [{:game_players, :player}]}, {:blue_team, :players}, {:orange_team, :players}])
     render(conn, "show.json-api", data: match)
   end
 
   def update(conn, %{"id" => id, "data" => data}) do
-    match = Repo.get!(Match, id) |> Repo.preload([:blue_team, :orange_team, :games]) |> Repo.preload([blue_team: :players, orange_team: :players])
+    match = Repo.get!(Match, id) |> Repo.preload([{:games, [{:game_players, :player}]}, {:blue_team, :players}, {:orange_team, :players}])
     changeset = Match.changeset(match, create_parms(data))
 
     case Repo.update(changeset) do

@@ -4,6 +4,7 @@ defmodule RocketleaguePhoenix.Game do
   schema "games" do
     field :game_number, :integer
     belongs_to :match, RocketleaguePhoenix.Match
+    has_many :game_players, RocketleaguePhoenix.GamePlayer
 
     timestamps()
   end

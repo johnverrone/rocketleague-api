@@ -26,7 +26,8 @@ defmodule RocketleaguePhoenix.GameControllerTest do
         "game-number" => nil, 
         "match-id" => nil
       }, 
-      "type" => "game"
+      "type" => "game",
+      "relationships" => %{"game-players" => %{"data" => []}}
     }
   end
 

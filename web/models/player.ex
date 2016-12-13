@@ -8,6 +8,7 @@ defmodule RocketleaguePhoenix.Player do
     field :email_address, :string
 
     belongs_to :team, RocketleaguePhoenix.Team
+    has_many :game_players, RocketleaguePhoenix.GamePlayer
     timestamps()
   end
 
