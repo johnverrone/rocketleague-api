@@ -4,7 +4,7 @@ defmodule RocketleaguePhoenix.PlayerController do
   alias RocketleaguePhoenix.Player
   
   def index(conn, _params) do
-    players = Repo.all(Player)
+    players = Repo.all(Player) |> Repo.preload([:team])
     render(conn, "index.json-api", data: players)
   end
 
@@ -13,6 +13,7 @@ defmodule RocketleaguePhoenix.PlayerController do
 
     case Repo.insert(changeset) do
       {:ok, player} ->
+        player = Repo.preload(player, [:team])
         conn
         |> put_status(:created)
         |> put_resp_header("location", player_path(conn, :show, player))
@@ -25,12 +26,12 @@ defmodule RocketleaguePhoenix.PlayerController do
   end
 
   def show(conn, %{"id" => id}) do
-    player = Repo.get!(Player, id)
+    player = Repo.get!(Player, id) |> Repo.preload([:team])
     render(conn, "show.json-api", data: player)
   end
 
   def update(conn, %{"id" => id, "data" => %{"attributes" => player_params}}) do
-    player = Repo.get!(Player, id)
+    player = Repo.get!(Player, id) |> Repo.preload([:team])
     changeset = Player.changeset(player, player_params)
 
     case Repo.update(changeset) do

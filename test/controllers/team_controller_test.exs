@@ -24,8 +24,7 @@ defmodule RocketleaguePhoenix.TeamControllerTest do
       "id" => "#{team.id}",
       "type" => "team",
       "relationships" => %{
-        "players" => %{"data" => []},
-        "matches" => %{"data" => nil}
+        "players" => %{"data" => []}
       },
       "attributes" => %{
         "name" => team.name,

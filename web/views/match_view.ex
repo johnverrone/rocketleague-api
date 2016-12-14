@@ -5,10 +5,10 @@ defmodule RocketleaguePhoenix.MatchView do
   attributes [:match_date, :orange_team_id, :blue_team_id, :week_number]
   has_one :blue_team,
     serializer: RocketleaguePhoenix.TeamView,
-    include: true
+    include: false
   has_one :orange_team,
     serializer: RocketleaguePhoenix.TeamView,
-    include: true
+    include: false
   has_many :games,
     serializer: RocketleaguePhoenix.GameView,
     include: true

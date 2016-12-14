@@ -4,7 +4,7 @@ defmodule RocketleaguePhoenix.TeamController do
   alias RocketleaguePhoenix.Team
 
   def index(conn, _params) do
-    teams = Team |> Repo.all |> Repo.preload([:players, :orange_matches, :blue_matches])
+    teams = Team |> Repo.all |> Repo.preload([:players])
     render(conn, "index.json-api", data: teams)
   end
 

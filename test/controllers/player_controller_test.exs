@@ -28,7 +28,8 @@ defmodule RocketleaguePhoenix.PlayerControllerTest do
         "first-name" => player.first_name,
         "last-name" => player.last_name,
         "email-address" => player.email_address
-      }
+      },
+      "relationships" => %{"team" => %{"data" => nil}}
     }
   end
 

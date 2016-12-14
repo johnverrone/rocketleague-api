@@ -4,9 +4,6 @@ defmodule RocketleaguePhoenix.TeamView do
 
   attributes [:name, :wins, :loses]
   has_many :players, 
-    serializer: RocketleaguePhoenix.PlayerView
-    # include: true
-  has_many :matches, 
-    serializer: RocketleaguePhoenix.MatchView
-    # include: true
+    serializer: RocketleaguePhoenix.PlayerView,
+    include: false
 end
