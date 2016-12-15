@@ -12,13 +12,17 @@ defmodule RocketleaguePhoenix.Player do
     timestamps()
   end
 
+  @required_fields ~w(username first_name last_name email_address team_id)
+  @optional_fields ~w()
+
+
   @doc """
   Builds a changeset based on the `struct` and `params`.
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:username, :first_name, :last_name, :email_address])
-    |> validate_required([:username, :first_name, :last_name, :email_address])
+    |> cast(params, @required_fields, @optional_fields)
+    |> foreign_key_constraint(:team_id)
     |> validate_format(:email_address, ~r/@/)
     |> unique_constraint(:email_address)
   end

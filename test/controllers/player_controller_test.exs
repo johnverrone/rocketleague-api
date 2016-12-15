@@ -2,10 +2,13 @@ defmodule RocketleaguePhoenix.PlayerControllerTest do
   use RocketleaguePhoenix.ConnCase
 
   alias RocketleaguePhoenix.Player
-  @valid_attrs %{email_address: "some@content", first_name: "some content", last_name: "some content", username: "some content"}
+  alias RocketleaguePhoenix.Team
+  
+  @valid_attrs %{email_address: "some@content", first_name: "some content", last_name: "some content", username: "some content", team_id: 1}
   @invalid_attrs %{}
 
   setup %{conn: conn} do
+    Repo.insert!(%Team{id: 1, name: "Carship Enterprise", wins: 0, loses: 0})
     conn = conn
       |> put_req_header("accept", "application/vnd.api+json")
       |> put_req_header("content-type", "application/vnd.api+json")

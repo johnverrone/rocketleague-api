@@ -2,10 +2,16 @@ defmodule RocketleaguePhoenix.PlayerTest do
   use RocketleaguePhoenix.ModelCase
 
   alias RocketleaguePhoenix.Player
+  alias RocketleaguePhoenix.Team
 
-  @valid_attrs %{email_address: "some@content", first_name: "some content", last_name: "some content", username: "some content"}
+  @valid_attrs %{email_address: "some@content", first_name: "some content", last_name: "some content", username: "some content", team_id: 1}
   @invalid_email %{email_address: "some content", first_name: "some content", last_name: "some content", username: "some content"}
   @invalid_attrs %{}
+
+  setup do
+    Repo.insert!(%Team{id: 1, name: "Carship Enterprise", wins: 0, loses: 0})
+    :ok
+  end
 
   test "changeset with valid attributes" do
     changeset = Player.changeset(%Player{}, @valid_attrs)
