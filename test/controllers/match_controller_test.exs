@@ -2,11 +2,14 @@ defmodule RocketleaguePhoenix.MatchControllerTest do
   use RocketleaguePhoenix.ConnCase
 
   alias RocketleaguePhoenix.Match
-  @valid_attrs %{match_date: %{day: 17, month: 4, year: 2010}}
+  alias RocketleaguePhoenix.Team
+
+  @valid_attrs %{match_date: %{day: 17, month: 4, year: 2010}, week_number: 1}
   @invalid_attrs %{}
   @valid_relationships %{"orange_team" => %{"data" => %{type: "team", id: "1"}}, "blue_team" => %{"data" => %{type: "team", id: "1"}}}
 
   setup %{conn: conn} do
+    Repo.insert!(%Team{id: 1, name: "Carship Enterprise", wins: 0, loses: 0})
     conn = conn
       |> put_req_header("accept", "application/vnd.api+json")
       |> put_req_header("content-type", "application/vnd.api+json")
@@ -44,23 +47,23 @@ defmodule RocketleaguePhoenix.MatchControllerTest do
     end
   end
 
-  # test "creates and renders resource when data is valid", %{conn: conn} do
-  #   conn = post conn, match_path(conn, :create), data: %{attributes: @valid_attrs, relationships: @valid_relationships}
-  #   assert json_response(conn, 201)["data"]["id"]
-  #   assert Repo.get_by(Match, @valid_attrs)
-  # end
+  test "creates and renders resource when data is valid", %{conn: conn} do
+    conn = post conn, match_path(conn, :create), data: %{attributes: @valid_attrs, relationships: @valid_relationships}
+    assert json_response(conn, 201)["data"]["id"]
+    assert Repo.get_by(Match, @valid_attrs)
+  end
 
   test "does not create resource and renders errors when data is invalid", %{conn: conn} do
     conn = post conn, match_path(conn, :create), data: %{attributes: @invalid_attrs}
     assert json_response(conn, 422)["errors"] != %{}
   end
 
-  # test "updates and renders chosen resource when data is valid", %{conn: conn} do
-  #   match = Repo.insert! %Match{}
-  #   conn = put conn, match_path(conn, :update, match), data: %{attributes: @valid_attrs}
-  #   assert json_response(conn, 200)["data"]["id"]
-  #   assert Repo.get_by(Match, @valid_attrs)
-  # end
+  test "updates and renders chosen resource when data is valid", %{conn: conn} do
+    match = Repo.insert! %Match{}
+    conn = put conn, match_path(conn, :update, match), data: %{attributes: @valid_attrs,  relationships: @valid_relationships}
+    assert json_response(conn, 200)["data"]["id"]
+    assert Repo.get_by(Match, @valid_attrs)
+  end
 
   test "does not update chosen resource and renders errors when data is invalid", %{conn: conn} do
     match = Repo.insert! %Match{}
