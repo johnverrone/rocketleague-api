@@ -3,9 +3,11 @@ defmodule RocketleaguePhoenix.PlayerControllerTest do
 
   alias RocketleaguePhoenix.Player
   alias RocketleaguePhoenix.Team
-  
-  @valid_attrs %{email_address: "some@content", first_name: "some content", last_name: "some content", username: "some content", team_id: 1}
+
+  @valid_attrs %{email_address: "some@content", first_name: "some content", last_name: "some content", username: "some content"}
   @invalid_attrs %{}
+  @valid_relationships %{"team" => %{"data" => %{type: "teams", id: "1"}}}
+
 
   setup %{conn: conn} do
     Repo.insert!(%Team{id: 1, name: "Carship Enterprise", wins: 0, loses: 0})
@@ -43,7 +45,7 @@ defmodule RocketleaguePhoenix.PlayerControllerTest do
   end
 
   test "creates and renders resource when data is valid", %{conn: conn} do
-    conn = post conn, player_path(conn, :create), data: %{attributes: @valid_attrs}
+    conn = post conn, player_path(conn, :create), data: %{attributes: @valid_attrs, relationships: @valid_relationships}
     assert json_response(conn, 201)["data"]["id"]
     assert Repo.get_by(Player, @valid_attrs)
   end
@@ -55,7 +57,7 @@ defmodule RocketleaguePhoenix.PlayerControllerTest do
 
   test "updates and renders chosen resource when data is valid", %{conn: conn} do
     player = Repo.insert! %Player{}
-    conn = put conn, player_path(conn, :update, player), data: %{attributes: @valid_attrs}
+    conn = put conn, player_path(conn, :update, player), data: %{attributes: @valid_attrs, relationships: @valid_relationships}
     assert json_response(conn, 200)["data"]["id"]
     assert Repo.get_by(Player, @valid_attrs)
   end
